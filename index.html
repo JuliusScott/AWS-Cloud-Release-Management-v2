@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Release Pipeline</title>
+
+```
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #0b1120;
+        color: #e5e7eb;
+        min-height: 100vh;
+    }
+
+    header {
+        text-align: center;
+        padding: 60px 20px 35px;
+    }
+
+    header h1 {
+        font-size: 42px;
+        margin-bottom: 12px;
+        color: #ffffff;
+    }
+
+    header p {
+        color: #94a3b8;
+        font-size: 18px;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .status {
+        background: #111827;
+        border: 1px solid #1f2937;
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+        margin-bottom: 35px;
+    }
+
+    .status h2 {
+        color: #22c55e;
+        margin-bottom: 8px;
+    }
+
+    .pipeline {
+        background: #111827;
+        border: 1px solid #1f2937;
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 35px;
+    }
+
+    .pipeline h2 {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .flow {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .stage {
+        background: #1e293b;
+        border: 1px solid #334155;
+        padding: 14px 18px;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+    .arrow {
+        color: #38bdf8;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 18px;
+        margin-bottom: 40px;
+    }
+
+    .card {
+        background: #111827;
+        border: 1px solid #1f2937;
+        border-radius: 10px;
+        padding: 22px;
+    }
+
+    .card h3 {
+        color: #38bdf8;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        color: #94a3b8;
+        line-height: 1.5;
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        color: #64748b;
+        border-top: 1px solid #1f2937;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+    <h1>Cloud Release Pipeline</h1>
+    <p>Containerized CI/CD on AWS</p>
+</header>
+
+<main class="container">
+
+```
+<section class="status">
+    <h2>✓ Application Running</h2>
+    <p>This application was deployed through an automated AWS container release pipeline.</p>
+</section>
+
+<section class="pipeline">
+    <h2>Release Workflow</h2>
+
+    <div class="flow">
+        <div class="stage">GitHub</div>
+        <div class="arrow">→</div>
+
+        <div class="stage">CodePipeline</div>
+        <div class="arrow">→</div>
+
+        <div class="stage">CodeBuild</div>
+        <div class="arrow">→</div>
+
+        <div class="stage">Docker Build</div>
+        <div class="arrow">→</div>
+
+        <div class="stage">ECR</div>
+        <div class="arrow">→</div>
+
+        <div class="stage">ECS / Fargate DEV</div>
+        <div class="arrow">→</div>
+
+        <div class="stage">Validation</div>
+        <div class="arrow">→</div>
+
+        <div class="stage">Manual Approval</div>
+        <div class="arrow">→</div>
+
+        <div class="stage">ECS / Fargate PROD</div>
+    </div>
+</section>
+
+<section class="details">
+
+    <div class="card">
+        <h3>Continuous Integration</h3>
+        <p>
+            Source changes from GitHub enter CodePipeline and are processed
+            by AWS CodeBuild.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Container Build</h3>
+        <p>
+            CodeBuild packages the application into a Docker image and
+            pushes the image to Amazon ECR.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Development</h3>
+        <p>
+            The container is deployed to Amazon ECS using AWS Fargate
+            for development validation.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Production Gate</h3>
+        <p>
+            Production deployment requires manual approval after the
+            development release has been validated.
+        </p>
+    </div>
+
+</section>
+```
+
+</main>
+
+<footer>
+    GitHub → CodePipeline → CodeBuild → Docker → ECR → ECS/Fargate DEV → Validation → Manual Approval → PROD
+</footer>
+
+</body>
+</html>
